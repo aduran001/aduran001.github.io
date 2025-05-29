@@ -1,0 +1,470 @@
+/* ==========================================================
+   🔥 GENERAL STYLES
+   ========================================================== */
+body {
+    font-family: "Courier New", monospace;
+    background-color: black;
+    color: #0f0;
+    transition: background-color 0.3s, color 0.3s ease-in-out;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==========================================================
+   🌞 LIGHT MODE STYLES
+   ========================================================== */
+body.light-mode {
+    background-color: #f4f4f4;
+    color: #222;
+}
+
+body.light-mode .matrix-bg {
+    background: #e0e0e0;
+}
+
+body.light-mode .header {
+    background: rgba(0,0,0,0.05);
+    border-bottom: 2px solid #222;
+}
+
+body.light-mode .logo,
+body.light-mode .nav-links a,
+body.light-mode .cta-button {
+    color: #222;
+    text-shadow: 0 0 10px #fff;
+    border-color: #222;
+}
+
+body.light-mode .cta-button {
+    background: #fff;
+    box-shadow: 0 0 10px #bbb;
+}
+
+body.light-mode .cta-button:hover {
+    background: #222;
+    color: #fff;
+}
+
+/* ==========================================================
+   🟩 MATRIX BACKGROUND ANIMATION
+   ========================================================== */
+.matrix-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.matrix-bg span {
+    position: absolute;
+    color: #0f0;
+    font-size: 18px;
+    opacity: 0.7;
+    animation: fall 3s linear infinite;
+}
+
+/* Falling Code Effect */
+@keyframes fall {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* ==========================================================
+   --- Header & Navbar ---
+   ========================================================== */
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 255, 0, 0.08);
+    border-bottom: 2px solid #0f0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    backdrop-filter: blur(8px); /* This line enables the blur effect */
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 0 8px 0;
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #0f0;
+    text-shadow: 0 0 15px #0f0;
+    cursor: pointer;
+    margin-bottom: 2px;
+    transition: color 0.3s, text-shadow 0.3s, transform 0.3s;
+}
+
+.logo:hover {
+    color: #fff;
+    text-shadow: 0 0 30px #0f0, 0 0 60px #0f0;
+    transform: scale(1.08) rotate(-2deg);
+}
+
+.logo.logo-animate {
+    animation: logoPop 0.7s;
+}
+
+@keyframes logoPop {
+    0% { transform: scale(1) rotate(0deg);}
+    30% { transform: scale(1.2) rotate(3deg);}
+    60% { transform: scale(0.95) rotate(-2deg);}
+    100% { transform: scale(1) rotate(0deg);}
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    margin-top: 8px;
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links a {
+    font-size: 1.1rem;
+    color: #0f0;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s, text-shadow 0.3s;
+    text-shadow: 0 0 10px rgba(0,255,0,0.7);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #fff;
+    text-shadow: 0 0 20px #0f0, 0 0 40px #0f0;
+    border-bottom: 2px solid #0f0;
+}
+
+/* ==========================================================
+   ✨ NAV LINKS & BUTTONS
+   ========================================================== */
+.cta-button, .project-button {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    background: black;
+    color: #0f0;
+    border: 2px solid #0f0;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+}
+
+.cta-button:hover, .project-button:hover {
+    background: #0f0;
+    color: black;
+    box-shadow: 0 0 10px #0f0;
+    transform: scale(1.05);
+}
+
+@keyframes glowEffect {
+    0% { box-shadow: 0 0 5px rgba(0, 255, 0, 0.5); }
+    100% { box-shadow: 0 0 15px rgba(0, 255, 0, 0.9); }
+}
+
+/* ==========================================================
+   🚀 HERO SECTION
+   ========================================================== */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    margin-top: 120px; /* Add spacing to push hero content below the fixed header */
+}
+
+/* Hero Title */
+#hero-title {
+    font-size: 42px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px #0f0;
+}
+
+/* Smooth Fade-In Effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Matrix Glitch Animation for Profile Picture */
+@keyframes matrix-glitch {
+    0% { filter: none; }
+    10% { filter: hue-rotate(90deg) brightness(1.2); transform: translateX(-2px); }
+    20% { filter: none; }
+    30% { filter: hue-rotate(180deg) brightness(0.8); transform: translateX(2px); }
+    40% { filter: none; }
+    50% { filter: contrast(1.4); }
+    60% { filter: none; }
+    70% { filter: hue-rotate(90deg) brightness(1.2); transform: translateY(-2px); }
+    80% { filter: none; }
+    90% { filter: hue-rotate(180deg) brightness(0.8); transform: translateY(2px); }
+    100% { filter: none; }
+}
+
+/* ==========================================================
+   👤 ABOUT SECTION
+   ========================================================== */
+.about {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.about-container img {
+    width: 150px;
+    border-radius: 50%;
+}
+
+/* ==========================================================
+   💻 MATRIX INPUT STYLES
+   ========================================================== */
+.matrix-input {
+    width: 100%;
+    margin: 12px 0 8px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1.5px solid #0f0;
+    background: #111;
+    color: #0f0;
+    font-family: "Courier New", monospace;
+    font-size: 1rem;
+    box-shadow: 0 0 10px rgba(0,255,0,0.15);
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.matrix-input:focus {
+    border-color: #fff;
+    box-shadow: 0 0 20px #0f0, 0 0 10px #0f0 inset;
+    background: #181818;
+    color: #fff;
+}
+
+/* ==========================================================
+   🚀 My Projects Section
+   ========================================================== */
+.projects {
+    padding: 80px 20px;
+    text-align: center;
+    background: rgba(0, 255, 0, 0.05);
+}
+
+.projects-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* ✅ Project Cards */
+.project {
+    width: 300px;
+    padding: 15px;
+    background: rgba(0, 255, 0, 0.1);
+    backdrop-filter: blur(6px);
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.project:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+}
+
+/* ✅ Project Screenshot */
+.project img {
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+}
+
+/* ✅ Project Info */
+.project-info h3 {
+    font-size: 20px;
+    color: #0f0;
+    text-shadow: 0 0 5px #0f0;
+}
+
+/* ✅ Tech Stack Labels */
+.tech-stack span {
+    display: inline-block;
+    background: black;
+    color: #0f0;
+    padding: 4px 8px;
+    margin: 4px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* ==========================================================
+   🚀 Game Section
+   ========================================================== */
+.game {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(0, 255, 0, 0.05);
+}
+
+/* ✅ Canvas Styling */
+#gameCanvas {
+    width: 600px;
+    height: 400px;
+    background: black;
+    border: 2px solid #0f0;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+}
+
+/* ✅ Game Controls */
+.game-controls {
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background: black;
+    color: #0f0;
+    border: 2px solid #0f0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+}
+
+button:hover {
+    background: #0f0;
+    color: black;
+}
+
+/* ==========================================================
+   TV PROFILE PICTURE - PNG TV BACKGROUND
+   ========================================================== */
+.tv-outer {
+    position: relative;
+    width: 260px;
+    height: 220px;
+    margin: 0 auto 24px auto;
+    background: url('images/tv-frame.png') center center no-repeat;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tv-inner {
+    position: absolute;
+    top: 38px;
+    left: 38px;
+    width: 180px;
+    height: 135px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.matrix-profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #111;
+    animation: matrix-static 2.5s steps(10) infinite;
+}
+
+.scanlines {
+    pointer-events: none;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0px,
+        rgba(0,0,0,0) 2px,
+        rgba(0,0,0,0.15) 4px,
+        rgba(0,0,0,0.15) 6px
+    );
+    opacity: 0.5;
+    z-index: 2;
+    mix-blend-mode: multiply;
+    animation: scan-move 2s linear infinite;
+}
+
+@keyframes scan-move {
+    0% { background-position-y: 0; }
+    100% { background-position-y: 12px; }
+}
+
+@keyframes matrix-static {
+    0%   { filter: grayscale(0.2) brightness(1) contrast(1.1); }
+    10%  { filter: grayscale(0.5) brightness(1.2) contrast(1.3); }
+    20%  { filter: grayscale(0.8) brightness(0.9) contrast(1.5); }
+    30%  { filter: grayscale(0.3) brightness(1.1) contrast(1.2); }
+    40%  { filter: grayscale(0.6) brightness(1.3) contrast(1.4); }
+    50%  { filter: grayscale(0.9) brightness(0.8) contrast(1.6); }
+    60%  { filter: grayscale(0.4) brightness(1.2) contrast(1.2); }
+    70%  { filter: grayscale(0.7) brightness(1) contrast(1.3); }
+    80%  { filter: grayscale(0.5) brightness(1.1) contrast(1.5); }
+    90%  { filter: grayscale(0.8) brightness(0.9) contrast(1.4); }
+    100% { filter: grayscale(0.2) brightness(1) contrast(1.1); }
+}
+
+/* ==========================================================
+   ✅ Modal Styling
+   ========================================================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    padding: 20px;
+    background: rgba(0, 255, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+    z-index: 1000;
+}
+
+.modal-content {
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    color: #0f0;
+    cursor: pointer;
+}
